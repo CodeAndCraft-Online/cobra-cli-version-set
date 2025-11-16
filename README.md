@@ -75,6 +75,37 @@ VersionInfo : File:             ...cobra-cli-build-test-windows-amd64.exe
               Language:         English (United States)
 ```
 
+## Adding an Icon
+
+To add an icon to the Windows executable:
+
+1. **Add the .ico file**: Place your icon file (in .ico format) in the project root or a desired location
+2. **Update IconPath**: In `versioninfo.json`, set the `"IconPath"` field to point to your .ico file:
+
+   ```json
+   {
+     ...
+     "IconPath": "your-icon.ico",
+     ...
+   }
+   ```
+
+3. **Rebuild**: Run `make build-windows` or the manual build commands
+
+No further actions are needed - the .ico file will automatically be embedded into the Windows executable and displayed in Windows Explorer and the taskbar.
+
+### Converting Images to ICO Format
+
+If you have a PNG, SVG, or other image format, you can convert it to .ico using tools like `icon-gen`:
+
+```bash
+# Install icon-gen globally
+npm install -g icon-gen
+
+# Convert PNG to ICO
+icon-gen -i your-image.png -o . --ico --ico-name your-icon
+```
+
 ## How It Works
 
 1. **versioninfo.json**: Contains the Windows version information structure
